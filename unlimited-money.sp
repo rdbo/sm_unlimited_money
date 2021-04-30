@@ -1,3 +1,6 @@
+#pragma semicolon 1
+#pragma newdecls required
+
 #include <sourcemod>
 #include <cstrike>
 
@@ -21,7 +24,7 @@ public void OnPluginStart()
 Action EV_RoundStart(Event event, const char[] name, bool dontBroadcast)
 {
     int start_money = GetConVarInt(g_cvStartMoney);
-    for (int i = 0; i < MaxClients; ++i)
+    for (int i = 1; i < MaxClients; ++i)
     {
         if (IsClientInGame(i))
             SetEntProp(i, Prop_Send, "m_iAccount", start_money);
